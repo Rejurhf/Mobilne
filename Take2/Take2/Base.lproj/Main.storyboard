@@ -231,6 +231,19 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="airPreasureLabel" destination="lh0-Ak-hRS" id="OOH-4p-giJ"/>
+                        <outlet property="dateLabel" destination="z09-7i-bRW" id="hNI-Z2-55C"/>
+                        <outlet property="imageView" destination="QBz-QH-obe" id="icZ-1c-jD1"/>
+                        <outlet property="maxTempLabel" destination="E5g-YT-Tcp" id="JDe-bg-feA"/>
+                        <outlet property="minTempLabel" destination="vMM-l1-yjO" id="mTx-Dy-yib"/>
+                        <outlet property="nextButton" destination="FQM-0P-2GQ" id="VYF-Ts-aXz"/>
+                        <outlet property="previousButton" destination="lIZ-Pt-laE" id="lhU-b7-mcS"/>
+                        <outlet property="rainLabel" destination="Omj-Kw-HUk" id="5uu-xq-ZBj"/>
+                        <outlet property="stateLabel" destination="0T6-i3-oGc" id="H1F-tM-zV9"/>
+                        <outlet property="windDirectionLabel" destination="MDs-TQ-ku2" id="kfK-yV-bzd"/>
+                        <outlet property="windSpeedLabel" destination="If9-qx-9pw" id="UZN-RZ-heM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
