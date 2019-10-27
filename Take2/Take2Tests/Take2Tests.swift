@@ -1,15 +1,15 @@
 //
-//  WeatherAppTests.swift
-//  WeatherAppTests
+//  Take2Tests.swift
+//  Take2Tests
 //
 //  Created by user159552 on 10/27/19.
 //  Copyright © 2019 user159552. All rights reserved.
 //
 
 import XCTest
-@testable import WeatherApp
+@testable import Take2
 
-class WeatherAppTests: XCTestCase {
+class Take2Tests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.

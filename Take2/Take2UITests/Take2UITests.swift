@@ -1,6 +1,6 @@
 //
-//  WeatherAppUITests.swift
-//  WeatherAppUITests
+//  Take2UITests.swift
+//  Take2UITests
 //
 //  Created by user159552 on 10/27/19.
 //  Copyright © 2019 user159552. All rights reserved.
@@ -8,7 +8,7 @@
 
 import XCTest
 
-class WeatherAppUITests: XCTestCase {
+class Take2UITests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
