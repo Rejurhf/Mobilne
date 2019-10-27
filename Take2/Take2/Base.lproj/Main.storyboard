@@ -235,6 +235,7 @@
                         <outlet property="airPreasureLabel" destination="lh0-Ak-hRS" id="OOH-4p-giJ"/>
                         <outlet property="dateLabel" destination="z09-7i-bRW" id="hNI-Z2-55C"/>
                         <outlet property="imageView" destination="QBz-QH-obe" id="icZ-1c-jD1"/>
+                        <outlet property="localisationLabel" destination="IsU-pq-h88" id="AnI-5E-roQ"/>
                         <outlet property="maxTempLabel" destination="E5g-YT-Tcp" id="JDe-bg-feA"/>
                         <outlet property="minTempLabel" destination="vMM-l1-yjO" id="mTx-Dy-yib"/>
                         <outlet property="nextButton" destination="FQM-0P-2GQ" id="VYF-Ts-aXz"/>
