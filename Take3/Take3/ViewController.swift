@@ -19,36 +19,69 @@ class ViewController: UIViewController {
     @IBOutlet weak var windDirectionLabel: UILabel!
     @IBOutlet weak var airPressureLabel: UILabel!
     @IBOutlet weak var humidityLabel: UILabel!
+    @IBOutlet weak var previousButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
+    
+    
+    // Mark: global variables
+    private var currentDate: Date!
+    private var minDate: Date!
+    private var maxDate: Date!
+    
+    // Mark: constants
+    let DAYS_TO_SHOW = 5
+    let WARSAW_WOEID = 523920
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        locationLabel.text = "Warsaw"
+        
+        currentDate = Date()
+        minDate = currentDate
+        maxDate = Calendar.current.date(byAdding: .day, value: DAYS_TO_SHOW, to: minDate)
+        updateWeather(date: currentDate)
     }
 
     // Mark: Buttons action
     @IBAction func previousButtonOnClick(_ sender: UIButton) {
-        locationLabel.text = "Previosu"
-        dateLabel.text = "Previosu"
-        stateLabel.text = "Previosu"
-        minTempLabel.text = "Previosu"
-        maxTempLabel.text = "Previosu"
-        windSpeedLabel.text = "Previosu"
-        windDirectionLabel.text = "Previosu"
-        airPressureLabel.text = "Previosu"
-        humidityLabel.text = "Previosu"
+        nextButton.isEnabled = true
+        currentDate = Calendar.current.date(byAdding: .day, value: -1, to: currentDate)
+        updateWeather(date: currentDate)
+        if currentDate == minDate {
+            previousButton.isEnabled = false
+        }
     }
     
     @IBAction func nextButtonOnClick(_ sender: UIButton) {
-        locationLabel.text = "Next"
-        dateLabel.text = "Next"
-        stateLabel.text = "Next"
-        minTempLabel.text = "Next"
-        maxTempLabel.text = "Next"
-        windSpeedLabel.text = "Next"
-        windDirectionLabel.text = "Next"
-        airPressureLabel.text = "Next"
-        humidityLabel.text = "Next"
+        previousButton.isEnabled = true
+        currentDate = Calendar.current.date(byAdding: .day, value: 1, to: currentDate)
+        updateWeather(date: currentDate)
+        if currentDate == maxDate {
+            nextButton.isEnabled = false
+        }
     }
     
+    // MARK: functions
+    func updateWeather(date: Date){
+        let formatter = DateFormatter()
+        // initially set the format based on your datepicker date / server String
+        formatter.dateFormat = "dd-MM-yyyy"
+
+        var myString = formatter.string(from: date)
+        dateLabel.text = myString
+        updateLabels(text: "initial")
+    }
+    
+    func updateLabels(text: String){
+        stateLabel.text = text
+        minTempLabel.text = text
+        maxTempLabel.text = text
+        windSpeedLabel.text = text
+        windDirectionLabel.text = text
+        airPressureLabel.text = text
+        humidityLabel.text = text
+    }
 }
 
