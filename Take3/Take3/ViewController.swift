@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var humidityLabel: UILabel!
     @IBOutlet weak var previousButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var weatherStateImage: UIImageView!
     
     
     // Mark: global variables
@@ -31,12 +32,15 @@ class ViewController: UIViewController {
     // Mark: constants
     let DAYS_TO_SHOW = 5
     let WARSAW_WOEID = 523920
+    let METAWEATHER_URL = "https://www.metaweather.com/"
+    let METAWEATHER_WOEID_QUERY = "api/location/search/?query="
+    let METAWEATHER_WEATHER_QUERY = "api/location/"
+    let METAWEATHER_IMAGE_QUERY = "static/img/weather/png/"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        locationLabel.text = "Warsaw"
+
         
         currentDate = Date()
         minDate = currentDate
@@ -68,20 +72,41 @@ class ViewController: UIViewController {
         let formatter = DateFormatter()
         // initially set the format based on your datepicker date / server String
         formatter.dateFormat = "dd-MM-yyyy"
-
-        var myString = formatter.string(from: date)
+        let myString = formatter.string(from: date)
         dateLabel.text = myString
-        updateLabels(text: "initial")
+        
+        let dateComponents = Calendar.current.dateComponents([.year, .month, .day], from: date)
+        let weatherRequestUrl = METAWEATHER_URL + METAWEATHER_WEATHER_QUERY + "\(WARSAW_WOEID)/\(dateComponents.year!)/\(dateComponents.month!)/\(dateComponents.day!)"
+        if let weatherUrl = URL(string: weatherRequestUrl) {
+            _ = URLSession.shared.dataTask(with: URLRequest(url: weatherUrl), completionHandler: { (data, _, _) -> Void in
+                guard let data = data else { return }
+                DispatchQueue.main.async {
+                    let deserializedData = try? JSONSerialization.jsonObject(with: data, options: []) as! [[String: AnyObject]]
+                    let weatherData = deserializedData![0]
+                    self.updateLabels(weatherDict: weatherData)
+                    let weatherStateAbbreviation = String(weatherData["weather_state_abbr"] as! NSString)
+                    let imageRequestUrl = self.METAWEATHER_URL + self.METAWEATHER_IMAGE_QUERY + weatherStateAbbreviation + ".png"
+                    if let imageUrl = URL(string: imageRequestUrl) {
+                        _ = URLSession.shared.dataTask(with: URLRequest(url: imageUrl), completionHandler: { (data, _, _) -> Void in
+                            guard let data = data else { return }
+                            DispatchQueue.main.async {
+                                self.weatherStateImage.image = UIImage(data: data)
+                            }
+                        }).resume()
+                    }
+                }
+            }).resume()
+        }
     }
     
-    func updateLabels(text: String){
-        stateLabel.text = text
-        minTempLabel.text = text
-        maxTempLabel.text = text
-        windSpeedLabel.text = text
-        windDirectionLabel.text = text
-        airPressureLabel.text = text
-        humidityLabel.text = text
+    func updateLabels(weatherDict: [String: AnyObject]){
+        stateLabel.text = String(weatherDict["weather_state_name"] as! NSString)
+        minTempLabel.text = String(Int(truncating: weatherDict["min_temp"] as! NSNumber)) + "°C"
+        maxTempLabel.text = String(Int(truncating: weatherDict["max_temp"] as! NSNumber)) + "°C"
+        windSpeedLabel.text = String(Int(truncating: weatherDict["wind_speed"] as! NSNumber)) + " mph"
+        windDirectionLabel.text = String(weatherDict["wind_direction_compass"] as! NSString)
+        airPressureLabel.text = String(Int(truncating: weatherDict["air_pressure"] as! NSNumber)) + " mbar"
+        humidityLabel.text = String(Int(truncating: weatherDict["humidity"] as! NSNumber)) + "%"
     }
 }
 

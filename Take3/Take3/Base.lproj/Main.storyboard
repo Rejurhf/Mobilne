@@ -21,7 +21,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tHN-Kr-LeD">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Warsaw" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tHN-Kr-LeD">
                                 <rect key="frame" x="20" y="94.5" width="374" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -229,6 +229,7 @@
                         <outlet property="nextButton" destination="cos-g4-ZcN" id="peU-RS-n3h"/>
                         <outlet property="previousButton" destination="DlZ-Pu-Qr6" id="JlQ-RP-8Hr"/>
                         <outlet property="stateLabel" destination="16r-gu-6dg" id="CiD-KT-bfK"/>
+                        <outlet property="weatherStateImage" destination="e5G-ed-WAG" id="9CH-lo-uVK"/>
                         <outlet property="windDirectionLabel" destination="zyM-0J-5Uj" id="2v0-Uf-Vva"/>
                         <outlet property="windSpeedLabel" destination="AHR-M7-RAA" id="SaV-5Q-FBk"/>
                     </connections>
