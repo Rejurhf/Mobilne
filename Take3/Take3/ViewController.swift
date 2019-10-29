@@ -72,21 +72,20 @@ class ViewController: UIViewController {
         let formatter = DateFormatter()
         // initially set the format based on your datepicker date / server String
         formatter.dateFormat = "dd-MM-yyyy"
-        let myString = formatter.string(from: date)
-        dateLabel.text = myString
+        let dateString = formatter.string(from: date)
+        dateLabel.text = dateString
         
         let dateComponents = Calendar.current.dateComponents([.year, .month, .day], from: date)
-        let weatherRequestUrl = METAWEATHER_URL + METAWEATHER_WEATHER_QUERY + "\(WARSAW_WOEID)/\(dateComponents.year!)/\(dateComponents.month!)/\(dateComponents.day!)"
-        if let weatherUrl = URL(string: weatherRequestUrl) {
+        let requestUrl = METAWEATHER_URL + METAWEATHER_WEATHER_QUERY + "\(WARSAW_WOEID)/\(dateComponents.year!)/\(dateComponents.month!)/\(dateComponents.day!)"
+        if let weatherUrl = URL(string: requestUrl) {
             _ = URLSession.shared.dataTask(with: URLRequest(url: weatherUrl), completionHandler: { (data, _, _) -> Void in
                 guard let data = data else { return }
                 DispatchQueue.main.async {
-                    let deserializedData = try? JSONSerialization.jsonObject(with: data, options: []) as! [[String: AnyObject]]
+                    let deserializedData = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: AnyObject]]
                     let weatherData = deserializedData![0]
-                    self.updateLabels(weatherDict: weatherData)
                     let weatherStateAbbreviation = String(weatherData["weather_state_abbr"] as! NSString)
-                    let imageRequestUrl = self.METAWEATHER_URL + self.METAWEATHER_IMAGE_QUERY + weatherStateAbbreviation + ".png"
-                    if let imageUrl = URL(string: imageRequestUrl) {
+                    let imageRequest = self.METAWEATHER_URL + self.METAWEATHER_IMAGE_QUERY + weatherStateAbbreviation + ".png"
+                    if let imageUrl = URL(string: imageRequest) {
                         _ = URLSession.shared.dataTask(with: URLRequest(url: imageUrl), completionHandler: { (data, _, _) -> Void in
                             guard let data = data else { return }
                             DispatchQueue.main.async {
@@ -94,6 +93,8 @@ class ViewController: UIViewController {
                             }
                         }).resume()
                     }
+                    
+                    self.updateLabels(weatherDict: weatherData)
                 }
             }).resume()
         }
