@@ -23,6 +23,10 @@ class SearchViewController: UIViewController {
         let newCityWOEID = "1234"
         
         let newCity = City(cityName: newCityName, cityWOEID: newCityWOEID)
+        
+        Storage.shared.objects.append(newCity)
+        
+        performSegue(withIdentifier: "backToTable", sender: self)
     }
     /*
     // MARK: - Navigation
