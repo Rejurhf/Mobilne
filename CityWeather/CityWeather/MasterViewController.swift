@@ -36,10 +36,13 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
     @objc
     func insertNewObject(_ sender: Any) {
+        performSegue(withIdentifier: "toSearchCity", sender: self)
+        
         let newItem = City(cityName: "Warsaw", cityWOEID: 5)
         objects.insert(newItem, at: 0)
         let indexPath = IndexPath(row: 0, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
+        
 //        let context = self.fetchedResultsController.managedObjectContext
 //        let newEvent = Event(context: context)
 //
