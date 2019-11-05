@@ -186,6 +186,7 @@
                     <navigationItem key="navigationItem" id="TBL-lz-BTx"/>
                     <connections>
                         <outlet property="cityInputText" destination="22H-Jm-PPk" id="7iw-Ni-3fg"/>
+                        <outlet property="submitButton" destination="gZw-r4-Wbu" id="vhl-ae-23m"/>
                         <segue destination="7bK-jq-Zjz" kind="show" identifier="backToTable" id="xCZ-W5-6H2"/>
                     </connections>
                 </viewController>
