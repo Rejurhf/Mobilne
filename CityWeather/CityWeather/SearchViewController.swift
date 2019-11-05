@@ -9,7 +9,8 @@
 import UIKit
 
 class SearchViewController: UIViewController {
-
+    @IBOutlet weak var cityInputText: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,6 +18,12 @@ class SearchViewController: UIViewController {
     }
     
 
+    @IBAction func onClickSubmitButton(_ sender: UIButton) {
+        let newCityName = cityInputText.text!
+        let newCityWOEID = "1234"
+        
+        let newCity = City(cityName: newCityName, cityWOEID: newCityWOEID)
+    }
     /*
     // MARK: - Navigation
 

@@ -12,8 +12,8 @@ class City{
     var cityName:String
     var cityWOEID:String
     
-    init(cityName:String, cityWOEID:Int){
+    init(cityName:String, cityWOEID:String){
         self.cityName = cityName
-        self.cityWOEID = "\(cityWOEID)"
+        self.cityWOEID = cityWOEID
     }
 }
