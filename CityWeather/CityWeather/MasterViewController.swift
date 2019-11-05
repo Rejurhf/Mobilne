@@ -13,6 +13,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
     var detailViewController: DetailViewController? = nil
     var managedObjectContext: NSManagedObjectContext? = nil
+    var objects = Storage.shared.objects
 
 
     override func viewDidLoad() {
@@ -35,7 +36,10 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
     @objc
     func insertNewObject(_ sender: Any) {
-        performSegue(withIdentifier: "toSearchCity", sender: self)
+        let newItem = City(cityName: "Warsaw", cityWOEID: 5)
+        objects.insert(newItem, at: 0)
+        let indexPath = IndexPath(row: 0, section: 0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
 //        let context = self.fetchedResultsController.managedObjectContext
 //        let newEvent = Event(context: context)
 //
@@ -58,7 +62,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             if let indexPath = tableView.indexPathForSelectedRow {
-            let object = fetchedResultsController.object(at: indexPath)
+                let object = objects[indexPath.row]
                 let controller = (segue.destination as! UINavigationController).topViewController as! DetailViewController
                 controller.detailItem = object
                 controller.navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem
@@ -74,15 +78,26 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let sectionInfo = fetchedResultsController.sections![section]
-        return sectionInfo.numberOfObjects
+        return objects.count
+//        let sectionInfo = fetchedResultsController.sections![section]
+//        return sectionInfo.numberOfObjects
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let event = fetchedResultsController.object(at: indexPath)
-        configureCell(cell, withEvent: event)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CityTableUICell
+        let object = objects[indexPath.row]
+        
+        cell.cityNameLabel.text! = object.cityName
+        cell.cityWOEIDLabel.text! = object.cityWOEID
+        
+        cell.cityName = object.cityName
+        cell.cityWOEID = object.cityWOEID
+        
         return cell
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+//        let event = fetchedResultsController.object(at: indexPath)
+//        configureCell(cell, withEvent: event)
+//        return cell
     }
 
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -92,18 +107,24 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let context = fetchedResultsController.managedObjectContext
-            context.delete(fetchedResultsController.object(at: indexPath))
-                
-            do {
-                try context.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
+            objects.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
+//        if editingStyle == .delete {
+//            let context = fetchedResultsController.managedObjectContext
+//            context.delete(fetchedResultsController.object(at: indexPath))
+//
+//            do {
+//                try context.save()
+//            } catch {
+//                // Replace this implementation with code to handle the error appropriately.
+//                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+//                let nserror = error as NSError
+//                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+//            }
+//        }
     }
 
     func configureCell(_ cell: UITableViewCell, withEvent event: Event) {

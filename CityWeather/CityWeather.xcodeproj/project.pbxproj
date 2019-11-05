@@ -15,6 +15,9 @@
 		3FD25BB22369FB0D0062E413 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3FD25BB12369FB0D0062E413 /* Assets.xcassets */; };
 		3FD25BB52369FB0D0062E413 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FD25BB32369FB0D0062E413 /* LaunchScreen.storyboard */; };
 		3FD25BBD236A030C0062E413 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD25BBC236A030C0062E413 /* SearchViewController.swift */; };
+		853E13122371F03C000DF4E1 /* CityTableUICell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853E13112371F03C000DF4E1 /* CityTableUICell.swift */; };
+		85A083302370D48700FC12CA /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A0832F2370D48700FC12CA /* City.swift */; };
+		85A083322370D5A600FC12CA /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A083312370D5A600FC12CA /* Storage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		3FD25BB42369FB0D0062E413 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3FD25BB62369FB0D0062E413 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FD25BBC236A030C0062E413 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		853E13112371F03C000DF4E1 /* CityTableUICell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableUICell.swift; sourceTree = "<group>"; };
+		85A0832F2370D48700FC12CA /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		85A083312370D5A600FC12CA /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +68,8 @@
 			children = (
 				3FD25BA52369FB060062E413 /* AppDelegate.swift */,
 				3FD25BAA2369FB060062E413 /* MasterViewController.swift */,
+				85A0832F2370D48700FC12CA /* City.swift */,
+				85A083312370D5A600FC12CA /* Storage.swift */,
 				3FD25BAC2369FB060062E413 /* DetailViewController.swift */,
 				3FD25BAE2369FB060062E413 /* Main.storyboard */,
 				3FD25BB12369FB0D0062E413 /* Assets.xcassets */,
@@ -69,6 +77,7 @@
 				3FD25BB62369FB0D0062E413 /* Info.plist */,
 				3FD25BA72369FB060062E413 /* CityWeather.xcdatamodeld */,
 				3FD25BBC236A030C0062E413 /* SearchViewController.swift */,
+				853E13112371F03C000DF4E1 /* CityTableUICell.swift */,
 			);
 			path = CityWeather;
 			sourceTree = "<group>";
@@ -145,10 +154,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FD25BBD236A030C0062E413 /* SearchViewController.swift in Sources */,
+				85A083322370D5A600FC12CA /* Storage.swift in Sources */,
 				3FD25BA62369FB060062E413 /* AppDelegate.swift in Sources */,
+				85A083302370D48700FC12CA /* City.swift in Sources */,
 				3FD25BA92369FB060062E413 /* CityWeather.xcdatamodeld in Sources */,
 				3FD25BAB2369FB060062E413 /* MasterViewController.swift in Sources */,
 				3FD25BAD2369FB060062E413 /* DetailViewController.swift in Sources */,
+				853E13122371F03C000DF4E1 /* CityTableUICell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
