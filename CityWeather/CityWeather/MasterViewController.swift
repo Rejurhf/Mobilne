@@ -92,7 +92,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         let object = objects[indexPath.row]
         
         cell.cityNameLabel.text! = object.cityName
-        cell.cityWOEIDLabel.text! = object.cityWOEID
+        cell.cityTempLabel.text! = object.cityWOEID
         
         cell.cityName = object.cityName
         cell.cityWOEID = object.cityWOEID
