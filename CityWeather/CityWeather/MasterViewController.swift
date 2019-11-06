@@ -36,13 +36,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
 
     @objc
     func insertNewObject(_ sender: Any) {
-//        performSegue(withIdentifier: "toSearchCity", sender: self)
-        
-        createWeatherReport(locationName: "Warsaw", woeid: 523920, date: Date(), callback: { (weatherReport) in
-            self.objects.insert(weatherReport, at: 0)
-            let indexPath = IndexPath(row: 0, section: 0)
-            self.tableView.insertRows(at: [indexPath], with: .automatic)
-        })
+        performSegue(withIdentifier: "toSearchCity", sender: self)
         
 //        let newItem = City(cityName: "Warsaw", cityWOEID: "523920")
 //        objects.insert(newItem, at: 0)

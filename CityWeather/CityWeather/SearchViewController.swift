@@ -26,9 +26,13 @@ class SearchViewController: UIViewController {
         let newCityName = cityInputText.text!
         let newCityWOEID = "523920"
         
-        let newCity = City(cityName: newCityName, cityWOEID: newCityWOEID)
+        createWeatherReport(locationName: "Warsaw", woeid: 523920, date: Date(), callback: { (weatherReport) in
+            Storage.shared.objects.append(weatherReport)
+        })
         
-        Storage.shared.objects.append(newCity)
+//        let newCity = City(cityName: newCityName, cityWOEID: newCityWOEID)
+//
+//        Storage.shared.objects.append(newCity)
         
         performSegue(withIdentifier: "backToTable", sender: self)
     }
