@@ -145,11 +145,17 @@
                                 <rect key="frame" x="16" y="521" width="59" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Previous"/>
+                                <connections>
+                                    <action selector="onClickPreviousButton:" destination="JEX-9P-axG" eventType="touchUpInside" id="LbF-CZ-wbr"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8U-xM-fqI">
                                 <rect key="frame" x="327" y="521" width="32" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Next"/>
+                                <connections>
+                                    <action selector="onClickNextButton:" destination="JEX-9P-axG" eventType="touchUpInside" id="mWS-Lg-EbV"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -157,6 +163,17 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
+                    <connections>
+                        <outlet property="airPresureLabel" destination="V2H-FT-NSs" id="D8l-EC-zNC"/>
+                        <outlet property="dateLabel" destination="ybF-vl-pfR" id="K44-yZ-fhB"/>
+                        <outlet property="humidityLabel" destination="Sfj-Dz-6I9" id="FmE-sv-lNU"/>
+                        <outlet property="locationLabel" destination="Ue8-Bt-7Ht" id="wiX-vj-SYs"/>
+                        <outlet property="stateImage" destination="8be-pD-18B" id="Kgr-gc-rLZ"/>
+                        <outlet property="temperatureLabel" destination="6Wh-hy-UQf" id="NQT-jF-OEX"/>
+                        <outlet property="weatherLabel" destination="kcC-tC-TTh" id="tjt-Zr-NEt"/>
+                        <outlet property="windDirectionLabel" destination="V9a-mh-KMn" id="cSf-Tm-WF5"/>
+                        <outlet property="windSpeedLabel" destination="1YR-jO-F7R" id="ldi-mb-kdQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>

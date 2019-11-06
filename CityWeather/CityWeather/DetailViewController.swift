@@ -10,8 +10,17 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var weatherLabel: UILabel!
+    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var windSpeedLabel: UILabel!
+    @IBOutlet weak var windDirectionLabel: UILabel!
+    @IBOutlet weak var humidityLabel: UILabel!
+    @IBOutlet weak var airPresureLabel: UILabel!
     
-
+    @IBOutlet weak var stateImage: UIImageView!
+    
     func configureView() {
         // Update the user interface for the detail item.
         if let detail = detailItem {
@@ -33,5 +42,11 @@ class DetailViewController: UIViewController {
     }
 
 
+    @IBAction func onClickPreviousButton(_ sender: UIButton) {
+    }
+    
+    
+    @IBAction func onClickNextButton(_ sender: UIButton) {
+    }
 }
 
