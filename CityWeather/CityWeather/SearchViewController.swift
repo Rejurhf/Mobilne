@@ -24,11 +24,22 @@ class SearchViewController: UIViewController {
 
     @IBAction func onClickSubmitButton(_ sender: UIButton) {
         let newCityName = cityInputText.text!
-        let newCityWOEID = "523920"
+//        let newCityWOEID = "523920"
         
-        createWeatherReport(locationName: "Warsaw", woeid: 523920, date: Date(), callback: { (weatherReport) in
-            Storage.shared.objects.append(weatherReport)
-        })
+        if newCityName == "London"{
+            createWeatherReport(locationName: "London", woeid: 44418, date: Date(), callback: { (weatherReport) in
+                Storage.shared.objects.append(weatherReport)
+            })
+        }else if newCityName == "San Francisco"{
+            createWeatherReport(locationName: "San Francisco", woeid: 2487956, date: Date(), callback: { (weatherReport) in
+                Storage.shared.objects.append(weatherReport)
+            })
+        }else{
+            createWeatherReport(locationName: "Warsaw", woeid: 523920, date: Date(), callback: { (weatherReport) in
+                Storage.shared.objects.append(weatherReport)
+            })
+        }
+        
         
 //        let newCity = City(cityName: newCityName, cityWOEID: newCityWOEID)
 //
