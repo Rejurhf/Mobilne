@@ -16,6 +16,7 @@
 		3FD25BB52369FB0D0062E413 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FD25BB32369FB0D0062E413 /* LaunchScreen.storyboard */; };
 		3FD25BBD236A030C0062E413 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD25BBC236A030C0062E413 /* SearchViewController.swift */; };
 		853E13122371F03C000DF4E1 /* CityTableUICell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 853E13112371F03C000DF4E1 /* CityTableUICell.swift */; };
+		854083692372A67A0002B8DE /* Weatherman.swift in Sources */ = {isa = PBXBuildFile; fileRef = 854083682372A67A0002B8DE /* Weatherman.swift */; };
 		85A083302370D48700FC12CA /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A0832F2370D48700FC12CA /* City.swift */; };
 		85A083322370D5A600FC12CA /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A083312370D5A600FC12CA /* Storage.swift */; };
 /* End PBXBuildFile section */
@@ -32,6 +33,7 @@
 		3FD25BB62369FB0D0062E413 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3FD25BBC236A030C0062E413 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		853E13112371F03C000DF4E1 /* CityTableUICell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableUICell.swift; sourceTree = "<group>"; };
+		854083682372A67A0002B8DE /* Weatherman.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weatherman.swift; sourceTree = "<group>"; };
 		85A0832F2370D48700FC12CA /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		85A083312370D5A600FC12CA /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,6 +80,7 @@
 				3FD25BA72369FB060062E413 /* CityWeather.xcdatamodeld */,
 				3FD25BBC236A030C0062E413 /* SearchViewController.swift */,
 				853E13112371F03C000DF4E1 /* CityTableUICell.swift */,
+				854083682372A67A0002B8DE /* Weatherman.swift */,
 			);
 			path = CityWeather;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 				3FD25BA92369FB060062E413 /* CityWeather.xcdatamodeld in Sources */,
 				3FD25BAB2369FB060062E413 /* MasterViewController.swift in Sources */,
 				3FD25BAD2369FB060062E413 /* DetailViewController.swift in Sources */,
+				854083692372A67A0002B8DE /* Weatherman.swift in Sources */,
 				853E13122371F03C000DF4E1 /* CityTableUICell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
