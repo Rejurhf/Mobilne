@@ -26,7 +26,7 @@ func createWeatherReport(locationName: String, woeid: Int,
 func fetchWeatherData(weatherReport: City, callback: @escaping (City) -> Void) {
     let dateComponents = Calendar.current.dateComponents([.year, .month, .day], from: weatherReport.date!)
     let dateText = "\(String(describing: dateComponents.year!))/\(String(describing: dateComponents.month!))/\(String(describing: dateComponents.day!))"
-    let requestUrl = METAWEATHER_API_BASE + METAWEATHER_API_WEATHER + weatherReport.cityWOEID + dateText
+    let requestUrl = METAWEATHER_API_BASE + METAWEATHER_API_WEATHER + weatherReport.cityWOEID + "/" + dateText
     var weatherData: [String: AnyObject] = [:]
     if let url = URL(string: requestUrl) {
         _ = URLSession.shared.dataTask(with: URLRequest(url: url), completionHandler: { (data, _, _) -> Void in
