@@ -8,9 +8,22 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var cityInputText: UITextField!
     @IBOutlet weak var submitButton: UIButton!
+    
+    let list = ["Warsaw"]
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (list.count)
+    }
+    
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
+        cell.textLabel?.text = list[indexPath.row]
+        
+        return(cell)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
