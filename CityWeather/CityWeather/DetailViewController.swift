@@ -108,5 +108,10 @@ class DetailViewController: UIViewController {
             label.text = "\(String(describing: weatherReport.weatherStateAbbreviation!))"
         }
     }
+    
+    @IBAction func mapButtonOnClick(_ sender: UIButton) {
+        performSegue(withIdentifier: "goToMap", sender: self)
+    }
+    
 }
 

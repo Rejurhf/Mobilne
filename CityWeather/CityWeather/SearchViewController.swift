@@ -11,7 +11,7 @@ import UIKit
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var cityInputText: UITextField!
     @IBOutlet weak var submitButton: UIButton!
-    
+    @IBOutlet weak var currLocation: UILabel!
     let list = ["Warsaw"]
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -29,7 +29,7 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         
         submitButton.isEnabled = false
-        
+        currLocation.text = "You are currently in: Krakow, Poland"
         cityInputText.addTarget(self, action: #selector(editingChanged), for: .editingChanged)
         // Do any additional setup after loading the view.
     }

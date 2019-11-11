@@ -157,6 +157,14 @@
                                     <action selector="onClickNextButton:" destination="JEX-9P-axG" eventType="touchUpInside" id="mWS-Lg-EbV"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vXZ-Ae-DeN">
+                                <rect key="frame" x="172" y="521" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Map"/>
+                                <connections>
+                                    <action selector="mapButtonOnClick:" destination="JEX-9P-axG" eventType="touchUpInside" id="XTm-c6-6vB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="VUw-jc-0yf"/>
@@ -175,11 +183,43 @@
                         <outlet property="weatherLabel" destination="kcC-tC-TTh" id="tjt-Zr-NEt"/>
                         <outlet property="windDirectionLabel" destination="V9a-mh-KMn" id="cSf-Tm-WF5"/>
                         <outlet property="windSpeedLabel" destination="1YR-jO-F7R" id="ldi-mb-kdQ"/>
+                        <segue destination="b20-T5-saF" kind="show" identifier="goToMap" id="mVx-jA-g8a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="708" y="128.18590704647679"/>
+        </scene>
+        <!--Map View Controller-->
+        <scene sceneID="MfV-7b-te9">
+            <objects>
+                <viewController id="b20-T5-saF" customClass="MapViewController" customModule="CityWeather" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="P89-v9-9IL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="mDG-uZ-IA1">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="mDG-uZ-IA1" firstAttribute="leading" secondItem="axZ-nW-wn0" secondAttribute="leading" id="72y-zV-xMe"/>
+                            <constraint firstItem="axZ-nW-wn0" firstAttribute="bottom" secondItem="mDG-uZ-IA1" secondAttribute="bottom" id="E6i-Zf-Odh"/>
+                            <constraint firstItem="mDG-uZ-IA1" firstAttribute="top" secondItem="axZ-nW-wn0" secondAttribute="top" id="nlH-cC-7Jp"/>
+                            <constraint firstItem="axZ-nW-wn0" firstAttribute="trailing" secondItem="mDG-uZ-IA1" secondAttribute="trailing" id="tAQ-i3-GBH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="axZ-nW-wn0"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="qpU-IZ-Vbp"/>
+                    <connections>
+                        <outlet property="mapView" destination="mDG-uZ-IA1" id="eqD-lg-Xon"/>
+                        <segue destination="JEX-9P-axG" kind="show" identifier="goBackFromMap" id="8dY-0K-LPC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="19y-jg-16G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1509.5999999999999" y="124.58770614692655"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
@@ -263,13 +303,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You are currently in: Krakow, Poland" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TnZ-n1-ssf">
-                                <rect key="frame" x="51" y="112" width="273" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Search city" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TCQ-kr-77P">
                                 <rect key="frame" x="144" y="141" width="86" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -317,6 +350,13 @@
                                     <outlet property="delegate" destination="azV-ZJ-Mwb" id="PGO-DC-stf"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="current location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TnZ-n1-ssf">
+                                <rect key="frame" x="127" y="112" width="121" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Rd5-Hq-XRp"/>
@@ -324,6 +364,7 @@
                     <navigationItem key="navigationItem" id="TBL-lz-BTx"/>
                     <connections>
                         <outlet property="cityInputText" destination="22H-Jm-PPk" id="7iw-Ni-3fg"/>
+                        <outlet property="currLocation" destination="TnZ-n1-ssf" id="SjA-g1-1fL"/>
                         <outlet property="submitButton" destination="gZw-r4-Wbu" id="vhl-ae-23m"/>
                         <segue destination="7bK-jq-Zjz" kind="show" identifier="backToTable" id="xCZ-W5-6H2"/>
                     </connections>
@@ -352,5 +393,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="6S0-TO-JiA"/>
         <segue reference="xCZ-W5-6H2"/>
+        <segue reference="8dY-0K-LPC"/>
     </inferredMetricsTieBreakers>
 </document>
